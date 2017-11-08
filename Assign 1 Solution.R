@@ -1,9 +1,11 @@
-#Name: Omar Amr
-#k11776960
+# Name: Omar Amr
+# Matrikel-Nr: k11776960
 
 library(class)
 
-setwd('~/Desktop/1- JKU Material/02- Machine Learning - Supervised Techniques UE/ML-JKU-Assign-1')
+directory <- '~/Desktop/1- JKU Material/02- Machine Learning - Supervised Techniques UE/ML-JKU-Assign-1'
+
+setwd(directory)
 original_data_set <- read.csv('DataSet1.csv', sep = ',', header = FALSE, stringsAsFactors = FALSE)
 
 flipped_data_set <- original_data_set
@@ -13,7 +15,7 @@ set.seed(5000)
 
 plotting_function <- function(x_values, y_values, description)
 {
-  plot(x_values, y_values,type = "l", col="red", xlab = "K Value", ylab = "Error Value",
+  plot(x_values, y_values,type = "l", col="red", xlab = "K Value", ylab = "Error Average Value",
        main = description, cex.lab=1.2, cex.axis = 1.2, cex=1.2, xaxt="n")
   axis(side = 1, at = x_values)
 }
@@ -71,10 +73,10 @@ error_calculation_function <- function(current_data_set, description)
   plotting_function(seq(1, 51, 2), error_values, description)
 }
 
-error_calculation_function(original_data_set, "KNN Visualization")
+error_calculation_function(original_data_set, "KNN Visualization (Original Data Set)")
 
 flipping_function()
-error_calculation_function(flipped_data_set, "KNN Visualization After Flipping With Probability 20%")
+error_calculation_function(flipped_data_set, "KNN Visualization After Flipping Lables With 20% Probability")
 
 add_noise_function()
-error_calculation_function(data_set_with_noise, "KNN Visualization With Noise")
+error_calculation_function(data_set_with_noise, "KNN Visualization After Adding 4 Noise Features")
